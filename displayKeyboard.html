@@ -155,28 +155,23 @@
             if(text === text.toUpperCase()){
                 return text.toLowerCase();
             } 
-            return text.toUpperCase()
+            return text.toUpperCase();
         }
 
 
         for (let i = 0; i < target.length; i++) {
             target[i].onclick = () => {
-                if (capsActive) {
-                    if (shiftActive) {
-                        input.value += target[i].innerHTML;
-                        shiftActive = false;
-                    } else { 
-                        input.value += target[i].innerHTML.toUpperCase();
-                    };
-                }
-                else{
-                    if(shiftActive) {
-                        input.value += target[i].innerHTML.toUpperCase()
-                        shiftActive = false;
-                    }  else  {
-                        input.value += target[i].innerHTML
-                    };
-                }
+                let letter = target[i].innerHTML;
+                let modifiedLetter;
+                
+                if (shiftActive) {
+                    modifiedLetter = changeCase(letter);
+                    shiftActive = !shiftActive;
+                } else modifiedLetter = letter;
+
+                let finalText = (capsActive) ? changeCase(modifiedLetter) : modifiedLetter;
+
+                input.value += finalText;
             }
         }
     </script>
