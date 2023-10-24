@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #140f00;
+            color: #fef9ec;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+        }
+        table, tr, td{
+            border: 1px solid #000;
+            border-collapse:collapse;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            
+            
+        }
+        tr, td{
+            padding: 25px;
+        }
+
+        input {
+            width: min(100%,420px);
+            height: 45px;
+            color: #ff8400;
+            text-align: center;
+            /* border: none; */
+            border-bottom: #fef9ec;
+            position: relative;
+            outline: none;
+        }
+
+        input:hover,
+        input:focus {
+            box-shadow: 0 7px 10px rgb(138, 138, 138);
+        }
+
+        input::selection {
+            color: #f86c30;
+        }
+        .key {
+            
+        }
+        .color{
+            background: #000;
+            color: #fff;
+        }
+
+        .wrapper {
+            height: 100%;
+            width: min(100%,1620px);
+            margin: 200px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    
+
+    <div class="wrapper">
+        <table>
+            <tr>
+                <td class="">Tab</td>
+                <td class="key">ц</td>
+                <td class="key">й</td>
+                <td class="key">у</td>
+                <td class="key">к</td>
+                <td class="key">е</td>
+                <td class="key">н</td>
+                <td class="key">г</td>
+                <td class="key">ш</td>
+                <td class="key">щ</td>
+                <td class="key">з</td>
+                <td class="key">х</td>
+                <td class="key">ъ</td>
+                <td class="key" rowspan="2" >\</td>
+            </tr>
+            <tr>
+                <td class="keycaps" colspan="2">Caps Lock</td>
+                <td class="key">ф</td>
+                <td class="key">ы</td>
+                <td class="key">в</td>
+                <td class="key">а</td>
+                <td class="key">п</td>
+                <td class="key">р</td>
+                <td class="key">о</td>
+                <td class="key">л</td>
+                <td class="key">д</td>
+                <td class="key">ж</td>
+                <td class="key">э</td>
+                
+            </tr>
+            <tr>
+                <td class="shift" colspan="3">Shift</td>
+                <td class="key">я</td>
+                <td class="key">ч</td>
+                <td class="key">с</td>
+                <td class="key">м</td>
+                <td class="key">и</td>
+                <td class="key">т</td>
+                <td class="key">ь</td>
+                <td class="key">б</td>
+                <td class="key">ю</td>
+                <td class="shift" colspan="3">Shift</td>
+            </tr>
+        </table>
+    
+        <input type="text" name="Oleg" id="ctc">
+    </div>
+
+
+
+
+    <script>
+        let target = document.querySelectorAll('.key');
+        let caps = document.querySelector('.keycaps');
+        let input = document.querySelector('input');
+        let capsActive = false;
+        const shifts = document.querySelectorAll(".shift");
+        let shiftActive = false;
+
+        shifts.forEach(shift => {
+            shift.onclick = () => {
+                shiftActive = !shiftActive;
+            }
+        })
+        
+        caps.onclick = () => {
+            capsActive = !capsActive;
+        }
+
+
+        function changeCase(text) {
+            if(text === text.toUpperCase()){
+                return text.toLowerCase();
+            } 
+            return text.toUpperCase()
+        }
+
+
+        for (let i = 0; i < target.length; i++) {
+            target[i].onclick = () => {
+                if (capsActive) {
+                    if (shiftActive) {
+                        input.value += target[i].innerHTML;
+                        shiftActive = false;
+                    } else { 
+                        input.value += target[i].innerHTML.toUpperCase();
+                    };
+                }
+                else{
+                    if(shiftActive) {
+                        input.value += target[i].innerHTML.toUpperCase()
+                        shiftActive = false;
+                    }  else  {
+                        input.value += target[i].innerHTML
+                    };
+                }
+            }
+        }
+    </script>
+</body>
+</html>
