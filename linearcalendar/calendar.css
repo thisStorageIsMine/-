@@ -1,0 +1,135 @@
+:root {
+    --white: #ffffff;
+    --gray:#f5f3f4;
+    --dark-gray:#b1a7a6;
+    --red: #e5383b;
+    --weak-red: #e77e7f;
+    --black:#0b090a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--black);
+    font-family: 'JetBrains Mono', monospace;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: relative;
+}
+
+.weekdays {
+    width: auto;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.weekdays > li {
+    text-align: center;
+    width: 135px;
+    padding: 15px;
+}
+
+.weekdays > :is(li:nth-child(6),li:nth-child(7)) {
+    color: var(--red);
+}
+
+.weekdays > li:nth-child(even) {
+    background-color: var(--dark-gray);
+}
+
+.weekdays > li:nth-child(odd) {
+    background-color: var(--gray);
+}
+
+.weekend {
+    /* background-color: var(--red); */
+    position: relative;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.weekend::before {
+    background: linear-gradient(to bottom, var(--weak-red) 50%, transparent 50%, transparent 100% );
+    background-size: 100% 20px;
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 210%;
+    bottom: 100%;
+    top: -10px;
+    left: -35%;
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+.days {
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6,1fr);
+}
+
+.days > div {
+    
+    width: 135px;
+    aspect-ratio: 2/1;
+    border: 1px solid var(--black);
+}
+
+
+.data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    font-size: 2rem;
+    color: var(--black);
+
+}
+
+.data > h2 {
+    font-weight: 200;
+}
+.data > #year {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+button {
+    width: 75px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    font-size: 2rem;
+    text-align: center;
+}
+
+#left {
+    top: calc(50% - 15px);
+    left: 0;
+    transform: translateX(-200%);
+}
+
+
+#right {
+    right: 0;
+    top: calc(50% - 15px);
+    transform: translateX(200%);
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500;600;700;800&family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="calendar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    
+    <div class="wrapper">
+        <button id="left" onclick="plusMonth(-1)">	&#8592;</button>
+        <button id="right" onclick="plusMonth(1)">	&#8594;</button>
+        <div class="data">
+            <h2 id="month"></h2>
+            /
+            <h2 id="year"></h2>
+        </div>
+        <ul class="weekdays">
+            <li>Понедельник</li>
+            <li>Вторник</li>
+            <li>Среда</li>
+            <li>Четверг</li>
+            <li>Пятница</li>
+            <li>Суббота</li>
+            <li>Воскресенье</li>
+        </ul>
+        <div class="days">
+            
+        </div>
+        
+    </div>
+
+    <script src="calendar.js" defer></script>
+</body>
+</html>
