@@ -39,4 +39,7 @@ input.addEventListener("input", () => {
 
         ul.appendChild(li);
     });
+    if(input.value === "") {
+            ul.innerHTML = "";
+    }
 });
