@@ -5,6 +5,7 @@
     --red: #e5383b;
     --weak-red: #e77e7f;
     --black:#0b090a;
+    --blue:#1789fc;
 }
 
 * {
@@ -80,6 +81,29 @@ body {
     z-index: -1;
 }
 
+.not-this-month{
+    position: relative;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.not-this-month::before {
+    background: linear-gradient(to bottom, var(--dark-gray) 50%, transparent 50%, transparent 100% );
+    background-size: 100% 20px;
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 210%;
+    bottom: 100%;
+    top: -10px;
+    left: -35%;
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+
+
+
 .days {
     width: auto;
     display: grid;
@@ -91,8 +115,16 @@ body {
     
     width: 135px;
     aspect-ratio: 2/1;
-    border: 1px solid var(--black);
+    outline: 1px solid var(--black); 
+    margin-top: 1px;
+    margin-left: 1px;
 }
+
+.days > .today {
+    outline: 3px solid var(--red);
+    outline-offset: -1px;
+}
+
 
 
 .data {
